@@ -14,9 +14,7 @@ class RestaurantSerializer < ActiveModel::Serializer
   :hours_friday,
   :hours_saturday,
   :hours_sunday,
-  :picture,
-  :google_rating,
-  :price_level
+  :picture
 
   has_many :reviews
   has_many :restaurant_tags
