@@ -1,3 +1,5 @@
+require 'httparty'
+require 'json'
 
 module Api
   module V1
@@ -7,9 +9,12 @@ module Api
 
       def create
         @restaurant = Restaurant.create(restaurant_params)
-        if @restaurant.save
-          url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{@restaurant.placeId}&key=AIzaSyDXusTS714qpXljcDoKAm2j82JB9R-QOZs"
-
+          if @restaurant.save
+            url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{@restaurant.placeId}&key=AIzaSyDXusTS714qpXljcDoKAm2j82JB9R-QOZs"
+            response = HTTParty.get(url, format: :plain)
+            r = JSON.parse response, symbolize_names: true
+            @restaurant.update(lat: r[:result][:geometry][:location][:lat], lng: r[:result][:geometry][:location][:lng])
+          end
         render json: @restaurant, status: 201
       end
 
