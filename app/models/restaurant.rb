@@ -5,4 +5,6 @@ class Restaurant < ApplicationRecord
   # has_many :users, through: :user_restaurants
   has_many :restaurant_tags
   has_many :tags, through: :restaurant_tags
+
+  validates :placeId, uniqueness: :true
 end
