@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :reviews
-      resources :restaurant_tags
+      resources :user_restaurant_tags
       resources :tags
       resources :user_restaurants
       resources :restaurants

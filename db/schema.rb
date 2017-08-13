@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20170809205929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "restaurant_tags", force: :cascade do |t|
-    t.bigint "restaurant_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_restaurant_tags_on_restaurant_id"
-    t.index ["tag_id"], name: "index_restaurant_tags_on_tag_id"
-  end
-
   create_table "restaurants", force: :cascade do |t|
     t.string "placeId"
     t.decimal "lat"
@@ -61,6 +52,15 @@ ActiveRecord::Schema.define(version: 20170809205929) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_restaurant_tags", force: :cascade do |t|
+    t.bigint "user_restaurant_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_user_restaurant_tags_on_tag_id"
+    t.index ["user_restaurant_id"], name: "index_user_restaurant_tags_on_user_restaurant_id"
+  end
+
   create_table "user_restaurants", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "restaurant_id"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20170809205929) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "restaurant_tags", "restaurants"
-  add_foreign_key "restaurant_tags", "tags"
   add_foreign_key "reviews", "restaurants"
   add_foreign_key "reviews", "users"
+  add_foreign_key "user_restaurant_tags", "tags"
+  add_foreign_key "user_restaurant_tags", "user_restaurants"
   add_foreign_key "user_restaurants", "restaurants"
   add_foreign_key "user_restaurants", "users"
 end
