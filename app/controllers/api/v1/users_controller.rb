@@ -5,8 +5,14 @@ module Api
       before_action :set_user, only: [:show, :update, :destroy]
 
       def create
-        @user = User.create(user_params)
-        render json: @user, status: 201
+        @user = User.new(user_params)
+        if @user.valid?
+          @user.save
+          created_jwt = issue_token({id: @user.id})
+          render json: {username: @user.username, id:@user.id, jwt: created_jwt}
+        else
+          render json: {errors: @user.errors.full_messages}
+        end
       end
 
       def update
@@ -30,7 +36,7 @@ module Api
       private
 
       def user_params
-        params.permit(:username, :email, :password)
+        params.require(:user).permit(:username, :password)
       end
 
       def set_user

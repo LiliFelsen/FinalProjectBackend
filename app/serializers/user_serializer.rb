@@ -3,8 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   :username,
   :name,
   :profile_pic,
-  :email,
-  :password
+  :email
 
   has_many :reviews
   has_many :user_restaurants
