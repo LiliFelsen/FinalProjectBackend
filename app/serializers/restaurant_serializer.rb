@@ -18,5 +18,6 @@ class RestaurantSerializer < ActiveModel::Serializer
 
   has_many :reviews
   has_many :restaurant_tags
+  has_many :tags, through: :restaurant_tags
   has_many :user_restaurants
 end
