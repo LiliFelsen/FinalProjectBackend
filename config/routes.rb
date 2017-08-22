@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :user_restaurants
       resources :restaurants
       resources :users
+      resources :friendships
     end
   end
 
