@@ -17,6 +17,7 @@ class RestaurantSerializer < ActiveModel::Serializer
   :picture
 
   has_many :reviews
+  has_many :reviewers, through: :reviews
   has_many :restaurant_tags
   has_many :tags, through: :restaurant_tags
   has_many :user_restaurants
