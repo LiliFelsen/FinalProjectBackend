@@ -26,7 +26,7 @@ module Api
 
       def index
         @users = User.all
-        render json: @users, status: 201
+        render json: @users, include: ['user_restaurants', 'restaurants.user_restaurants', 'restaurants.tags', 'reviews', 'friends']
       end
 
       def destroy

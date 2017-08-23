@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   after_create :create_inverse_relationship
   belongs_to :user
-  belongs_to :friend, class_name: 'User', foreign_key: "friend_id"
+  belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
   validates :user, presence: true
   validates :friend, presence: true, uniqueness: { scope: :user }

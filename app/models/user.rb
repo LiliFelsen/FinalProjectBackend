@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :reviews
+  has_many :reviewed_restaurants, through: :reviews, source: :restaurant
   has_many :user_restaurants
   has_many :restaurants, through: :user_restaurants
   has_many :friendships
