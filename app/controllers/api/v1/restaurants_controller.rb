@@ -24,7 +24,7 @@ module Api
       end
 
       def show
-        render json: @restaurant, status: 201
+        render json: @restaurant, include: ['reviews', 'reviews.user', 'tags', 'user_restaurants' ]
       end
 
       def index
