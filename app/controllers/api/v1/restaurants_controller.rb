@@ -29,7 +29,7 @@ module Api
 
       def index
         @restaurants = Restaurant.all
-        render json: @restaurants, status: 201
+        render json: @restaurants, include: ['reviews', 'reviews.user', 'tags', 'user_restaurants' ]
       end
 
       def destroy
