@@ -1,24 +1,33 @@
-# README
+# ALL MY PLACES
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User Story
+As a user, I can:
+- Find a restaurant with its name and get its information (address, hours, website...)
+- Save it to my places and attach tags to it
+- Add reviews/ratings to the restaurants saved in my places
+- Add a visited status to the restaurants
+- See all my saved restaurants on a map or as a list
+- Filter the map/list by visited, wishlist or all and/or by tag
+- Add friends by username
+- See my friends places adn reviews
 
-Things you may want to cover:
+## Entity Relationship Diagram
 
-* Ruby version
+- [Link to ERD on LucidChart](https://www.lucidchart.com/invitations/accept/fdfe0ecb-7e08-4caa-b3f7-88a338fcb25c)
 
-* System dependencies
+## Frameworks and Librairies
 
-* Configuration
+Client
+- React
+- React Router Dom
+- Semantic React
+- Google Map React
+- React Google Autocomplete
+- Moment
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Server
+- Ruby on Rails
+- PostgreSQL
+- JWT
+- HTTParty
+- Active Record Serializers
